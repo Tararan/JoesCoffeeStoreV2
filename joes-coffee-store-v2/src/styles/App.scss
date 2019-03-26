@@ -1,0 +1,16 @@
+@import './variables/variables';
+@import './reset';
+
+@import '../Header/header';
+@import '../Nav/Nav';
+@import '../Aside/Sidebar';
+@import '../Products/products';
+@import '../Filtering/Filtering';
+@import '../Overlay/Overlay';
+@import '../Cart/Cart';
+@import '../Account/Account';
+
+@import './article';
+@import './button';
+@import './footer';
+@import './layout';
