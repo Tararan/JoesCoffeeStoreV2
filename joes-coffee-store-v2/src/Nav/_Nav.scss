@@ -1,0 +1,177 @@
+.Nav {
+  position: absolute;
+  z-index: 100;
+  top: 100vh;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  background-image: linear-gradient(to bottom, $brown, darken($brown, 2%));
+  height: 49px;
+  box-shadow: 0px 0px 20px 1px $dark-brown-shadow;
+  transition: filter 0.5s linear;
+
+  @media (min-width: $screen-sm) {
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    &:before {
+      background-image: url("#{$img-path}/logo.png");
+      content: "";
+      z-index: 50;
+      background-size: contain;
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__dynamic {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  &__hamburger {
+    color: $light-green;
+    padding-top: 18px;
+    margin-left: 10px;
+    margin-right: 20%;
+    width: 40px;
+    display: none;
+
+    @media (max-width: $screen-sm) {
+      margin: 0 auto;
+      text-align: center;
+      float: right;
+      display: block;
+    }
+  }
+
+  &__hamburger-line {
+    background-color: $light-brown;
+    display: block;
+    width: 30px;
+    height: 2px;
+    display: block;
+    margin-bottom: 5px;
+    transform: rotate(0deg);
+    transition: 0.15s ease-in-out;
+  }
+
+  &__hamburger:hover &__hamburger-line {
+    box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+  }
+
+  &__hamburger--is-open &__hamburger-line--first {
+    margin-top: 4px;
+    margin-bottom: -1px;
+    transform: rotate(135deg);
+  }
+
+  &__hamburger--is-open &__hamburger-line--second {
+    margin-bottom: -2px;
+    transform: rotate(-135deg);
+  }
+
+  &__hamburger--is-open &__hamburger-line--third {
+    margin-bottom: 10px;
+    transform: rotate(-135deg);
+  }
+
+  &--is-sticky {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    height: 49px;
+  }
+
+  &__list {
+    width: 100%;
+    text-align: center;
+    padding: 0 -3vw;
+
+    @media (min-width: $screen-sm) {
+      display: flex;
+    }
+
+    @media (max-width: $screen-sm) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 49px;
+
+      opacity: 0;
+      visibility: hidden;
+      transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
+    }
+  }
+
+  &__list--is-open {
+    opacity: 0.75;
+    visibility: visible;
+    transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
+  }
+
+  &__list li {
+    display: inline;
+  }
+
+  & ul li a {
+    @include headings;
+    display: inline-block;
+    padding: 8px 2vw 12px 2vw;
+    transition: color 0.5s;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 0;
+      height: 3px;
+      background: $light-brown;
+      transition: width 0.3s;
+    }
+
+    &:hover {
+      color: white;
+      text-shadow: 0 0 30px $light-brown;
+      background-size: 100%;
+      background-position: center center;
+      transition: color 0.15s;
+
+      &:after {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: $screen-xs-max) {
+      background-image: radial-gradient(ellipse 75% 100%,
+        rgba(90, 60, 29, 0.75),
+        rgba(62, 41, 20, 0.75));
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid darken($brown, 3%);
+    }
+  }
+
+  & #Link-OurCoffees {
+    padding-left: 40px;
+
+    &:before {
+      content:'||';
+      position: relative;
+      left: -30px;
+    }
+  }
+}
